@@ -31,6 +31,43 @@ class Puppet::Node::Facts::Puppetdb < Puppet::Indirector::REST
         package_inventory = inventory['packages'] if inventory.respond_to?(:keys)
         facts.values.delete('_puppet_inventory_1')
 
+        fact_names_blacklist = [
+         'argus_trusted_dn',
+         'blockdevices',
+         'cerndbhomedirs',
+         'db_cert',
+         'ec2_userdata',
+         'jenkins_plugins',
+         'mountpoints',
+         'mounts',
+         'nfsdevices',
+         'nfsmounts',
+         'partitions',
+         'path',
+         'printers',
+         'ssds',
+         'ssh',
+         'sshecdsakey',
+         'sshed25519key',
+         'sshfp_ecdsa',
+         'sshfp_ed25519',
+         'sshfp_rsa',
+         'sshrsakey',
+         'trustedca'
+        ]
+
+        fact_names_blacklist.each{|blacklisted_fact_name|
+          facts.values.delete(blacklisted_fact_name)
+        }
+
+        fact_names_blacklist_regexps = [
+          /^blockdevice_/,
+        ]
+
+        fact_names_blacklist_regexps.each{|blacklisted_fact_name_regexp|
+          facts.values.reject!{|k,v| k =~ blacklisted_fact_name_regexp}
+        }
+
         payload_value = {
           "certname" => facts.name,
           "values" => facts.values,
