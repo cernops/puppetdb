@@ -58,6 +58,7 @@
 (defgen :resource/exported gen/boolean)
 (defgen :resource/file (string+ 1024))
 (defgen :resource/line pg-pos-integer)
+(defgen :resource/kind (string+ 15))
 
 (defgen :resource/tag  (gen/string-from-regex #"[a-z0-9_][a-z0-9_:\-.]*"))
 (defgen :resource/tags (gen/vector :resource/tag 0 3))
@@ -78,6 +79,7 @@
                                     :resource/exported
                                     :resource/file
                                     :resource/line
+                                    :resource/kind
                                     :resource/parameters
                                     :resource/tags))
 
