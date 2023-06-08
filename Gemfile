@@ -34,6 +34,7 @@ group :test do
 
   # docker-api 1.32.0 requires ruby 2.0.0
   gem 'docker-api', '1.31.0'
+  gem 'packaging', :require => false
 
   case puppet_branch
   when "latest"
