@@ -41,7 +41,7 @@
                  [org.clojure/core.async]
                  [org.clojure/core.match "0.3.0-alpha4" :exclusions [org.clojure/tools.analyzer.jvm]]
                  [org.clojure/core.memoize "0.5.9"]
-                 [org.clojure/java.jdbc "0.6.1"]
+                 [org.clojure/java.jdbc "0.7.12"]
                  [org.clojure/tools.macro]
                  [org.clojure/math.combinatorics "0.1.1"]
                  [org.clojure/math.numeric-tower "0.0.4"]
@@ -85,7 +85,7 @@
                  ;; Database connectivity
                  [com.zaxxer/HikariCP "2.4.3" :exclusions [org.slf4j/slf4j-api]]
                  [honeysql "0.6.3"]
-                 [org.postgresql/postgresql "9.4.1208.jre7"]
+                 [org.postgresql/postgresql "42.6.0"]
 
                  ;; MQ connectivity
                  [org.apache.activemq/activemq-broker "5.13.2" :exclusions [org.slf4j/slf4j-api]]
